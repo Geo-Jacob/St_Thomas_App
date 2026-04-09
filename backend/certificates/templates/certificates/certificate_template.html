@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @page {
+        size: A4;
+        margin: 20mm;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        color: #111827;
+      }
+      h1 {
+        margin-bottom: 8px;
+        color: #1e3a8a;
+      }
+      h2 {
+        margin-top: 0;
+        color: #1e3a8a;
+      }
+      .meta {
+        margin: 16px 0;
+      }
+      .code {
+        margin-top: 18px;
+        padding-top: 8px;
+        border-top: 1px solid #d4af37;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>St Thomas App</h1>
+    <h2>{{ title }}</h2>
+    <p>This is to certify that <strong>{{ member_name }}</strong>.</p>
+    <div class="meta">
+      <p>Certificate Type: <strong>{{ certificate_type }}</strong></p>
+      <p>Issued On: <strong>{{ issued_on }}</strong></p>
+    </div>
+    {% if notes %}
+    <p>{{ notes }}</p>
+    {% endif %}
+    <p class="code">Verification Code: <strong>{{ verification_code }}</strong></p>
+  </body>
+</html>
