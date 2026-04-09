@@ -1,4 +1,4 @@
-# Ecclesia
+# St Thomas App
 
 Modern church directory and certificate management scaffold.
 
