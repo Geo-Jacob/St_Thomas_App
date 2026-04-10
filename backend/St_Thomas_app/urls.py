@@ -17,6 +17,8 @@ def api_home(request):
             "units": "/api/units/",
             "families": "/api/families/",
             "certificates": "/api/certificates/",
+            "schedule_weekly": "/api/schedule/weekly/",
+            "schedule_apply": "/api/schedule/apply/",
         }
     )
 
@@ -26,5 +28,6 @@ urlpatterns = [
     path("api/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/", include("accounts.urls")),
     path("api/", include("directory.urls")),
+    path("api/", include("events.urls")),
     path("api/certificates/", include("certificates.urls")),
 ]

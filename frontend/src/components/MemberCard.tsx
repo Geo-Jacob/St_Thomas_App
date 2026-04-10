@@ -4,16 +4,33 @@ import type { Member } from '../types'
 
 type Props = {
   member: Member
+  onOpenFamily?: (member: Member) => void
 }
 
-export function MemberCard({ member }: Props) {
+export function MemberCard({ member, onOpenFamily }: Props) {
   const { t } = useTranslation()
   const familyLabel = member.family_name ? `${member.family_name}${member.family_code ? ` (${member.family_code})` : ''}` : '—'
   const unitLabel = member.unit_name ? `${member.unit_name}${member.unit_code ? ` (${member.unit_code})` : ''}` : '—'
   const wardLabel = member.ward_name ? `${member.ward_name}${member.ward_code ? ` (${member.ward_code})` : ''}` : '—'
 
   return (
-    <article className="rounded-3xl border border-navy/10 bg-white p-5 shadow-soft">
+    <article
+      className="rounded-3xl border border-navy/10 bg-white p-5 shadow-soft transition hover:border-navy/30"
+      role={onOpenFamily ? 'button' : undefined}
+      tabIndex={onOpenFamily ? 0 : undefined}
+      onClick={onOpenFamily ? () => onOpenFamily(member) : undefined}
+      onKeyDown={
+        onOpenFamily
+          ? (event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                onOpenFamily(member)
+              }
+            }
+          : undefined
+      }
+      aria-label={onOpenFamily ? `${t('viewFamilyMembersFor')} ${member.display_name}` : undefined}
+    >
       <div className="flex items-start justify-between gap-4">
         <div>
           <h3 className="text-xl font-bold text-slate-900">{member.display_name}</h3>
@@ -43,6 +60,7 @@ export function MemberCard({ member }: Props) {
         <a
           href={member.phone_number ? `tel:${member.phone_number}` : '#'}
           aria-label={`Call ${member.display_name}`}
+          onClick={(event) => event.stopPropagation()}
           className={`inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${member.phone_number ? 'bg-navy text-white hover:bg-navy/90' : 'pointer-events-none bg-slate-200 text-slate-500'}`}
         >
           <PhoneCall className="h-4 w-4" aria-hidden="true" />

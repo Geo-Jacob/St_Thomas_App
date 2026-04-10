@@ -173,5 +173,5 @@ If migration fails on pg_trgm:
   CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 
-For backend:  ..\ .venv\Scripts\python.exe manage.py runserver 8000
+For backend:  ..\.venv\Scripts\python.exe manage.py runserver 8000
 For fronted: npm run dev

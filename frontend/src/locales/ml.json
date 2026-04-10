@@ -84,5 +84,143 @@
   "saving": "സംരക്ഷിക്കുന്നു...",
   "memberCreatedSuccess": "അംഗത്തെ വിജയകരമായി ചേർത്തു.",
   "memberCreatedError": "ഇപ്പോൾ അംഗത്തെ ചേർക്കാൻ കഴിഞ്ഞില്ല.",
-  "selectFamilyBeforeCreate": "അംഗത്തെ ചേർക്കുന്നതിന് മുമ്പ് ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക."
+  "selectFamilyBeforeCreate": "അംഗത്തെ ചേർക്കുന്നതിന് മുമ്പ് ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക.",
+  "manageHierarchy": "വാർഡ്, യൂണിറ്റ്, കുടുംബം നിയന്ത്രിക്കുക",
+  "addWard": "വാർഡ് ചേർക്കുക",
+  "saveWard": "വാർഡ് സംരക്ഷിക്കുക",
+  "wardName": "വാർഡിന്റെ പേര്",
+  "wardNameMl": "വാർഡിന്റെ മലയാളം പേര്",
+  "wardCode": "വാർഡ് കോഡ്",
+  "addUnit": "യൂണിറ്റ് ചേർക്കുക",
+  "saveUnit": "യൂണിറ്റ് സംരക്ഷിക്കുക",
+  "unitName": "യൂണിറ്റിന്റെ പേര്",
+  "unitNameMl": "യൂണിറ്റിന്റെ മലയാളം പേര്",
+  "unitCode": "യൂണിറ്റ് കോഡ്",
+  "addFamily": "കുടുംബം ചേർക്കുക",
+  "saveFamily": "കുടുംബം സംരക്ഷിക്കുക",
+  "familyName": "കുടുംബത്തിന്റെ പേര്",
+  "familyNameMl": "കുടുംബത്തിന്റെ മലയാളം പേര്",
+  "familyCode": "കുടുംബ കോഡ്",
+  "selectWard": "വാർഡ് തിരഞ്ഞെടുക്കുക",
+  "selectUnit": "യൂണിറ്റ് തിരഞ്ഞെടുക്കുക",
+  "removeWard": "വാർഡ് നീക്കുക",
+  "removeUnit": "യൂണിറ്റ് നീക്കുക",
+  "removeFamily": "കുടുംബം നീക്കുക",
+  "deleteWard": "വാർഡ് ഇല്ലാതാക്കുക",
+  "deleteUnit": "യൂണിറ്റ് ഇല്ലാതാക്കുക",
+  "deleteFamily": "കുടുംബം ഇല്ലാതാക്കുക",
+  "wardSavedSuccess": "വാർഡ് വിജയകരമായി സംരക്ഷിച്ചു.",
+  "unitSavedSuccess": "യൂണിറ്റ് വിജയകരമായി സംരക്ഷിച്ചു.",
+  "familySavedSuccess": "കുടുംബം വിജയകരമായി സംരക്ഷിച്ചു.",
+  "wardDeletedSuccess": "വാർഡ് വിജയകരമായി നീക്കി.",
+  "unitDeletedSuccess": "യൂണിറ്റ് വിജയകരമായി നീക്കി.",
+  "familyDeletedSuccess": "കുടുംബം വിജയകരമായി നീക്കി.",
+  "wardSaveError": "ഇപ്പോൾ വാർഡ് സംരക്ഷിക്കാൻ കഴിഞ്ഞില്ല.",
+  "unitSaveError": "ഇപ്പോൾ യൂണിറ്റ് സംരക്ഷിക്കാൻ കഴിഞ്ഞില്ല.",
+  "familySaveError": "ഇപ്പോൾ കുടുംബം സംരക്ഷിക്കാൻ കഴിഞ്ഞില്ല.",
+  "wardDeleteError": "ഇപ്പോൾ വാർഡ് നീക്കാൻ കഴിഞ്ഞില്ല.",
+  "unitDeleteError": "ഇപ്പോൾ യൂണിറ്റ് നീക്കാൻ കഴിഞ്ഞില്ല.",
+  "familyDeleteError": "ഇപ്പോൾ കുടുംബം നീക്കാൻ കഴിഞ്ഞില്ല.",
+  "selectWardBeforeUnitCreate": "യൂണിറ്റ് ചേർക്കുന്നതിന് മുമ്പ് ഒരു വാർഡ് തിരഞ്ഞെടുക്കുക.",
+  "selectUnitBeforeFamilyCreate": "കുടുംബം ചേർക്കുന്നതിന് മുമ്പ് ഒരു യൂണിറ്റ് തിരഞ്ഞെടുക്കുക.",
+  "selectWardBeforeDelete": "നീക്കുന്നതിന് മുമ്പ് ഒരു വാർഡ് തിരഞ്ഞെടുക്കുക.",
+  "selectUnitBeforeDelete": "നീക്കുന്നതിന് മുമ്പ് ഒരു യൂണിറ്റ് തിരഞ്ഞെടുക്കുക.",
+  "selectFamilyBeforeDelete": "നീക്കുന്നതിന് മുമ്പ് ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക.",
+  "manageMemberFamily": "അംഗത്തിന്റെ കുടുംബം നിയന്ത്രിക്കുക",
+  "selectMember": "അംഗത്തെ തിരഞ്ഞെടുക്കുക",
+  "addMemberToFamily": "അംഗത്തെ കുടുംബത്തിൽ ചേർക്കുക",
+  "removeMemberFromFamily": "അംഗത്തെ കുടുംബത്തിൽ നിന്ന് നീക്കുക",
+  "selectMemberAndFamilyBeforeAssign": "ചേർക്കുന്നതിന് മുമ്പ് അംഗവും കുടുംബവും തിരഞ്ഞെടുക്കുക.",
+  "selectMemberBeforeFamilyRemove": "കുടുംബത്തിൽ നിന്ന് നീക്കുന്നതിന് മുമ്പ് ഒരു അംഗത്തെ തിരഞ്ഞെടുക്കുക.",
+  "memberAssignedToFamilySuccess": "അംഗത്തെ കുടുംബത്തിൽ വിജയകരമായി ചേർത്തു.",
+  "memberRemovedFromFamilySuccess": "അംഗത്തെ കുടുംബത്തിൽ നിന്ന് വിജയകരമായി നീക്കി.",
+  "memberAssignToFamilyError": "ഇപ്പോൾ അംഗത്തെ കുടുംബത്തിൽ ചേർക്കാൻ കഴിഞ്ഞില്ല.",
+  "memberRemoveFromFamilyError": "ഇപ്പോൾ അംഗത്തെ കുടുംബത്തിൽ നിന്ന് നീക്കാൻ കഴിഞ്ഞില്ല."
+  ,"selectRelation": "കുടുംബ തലവനോടുള്ള ബന്ധം തിരഞ്ഞെടുക്കുക"
+  ,"selectRelationBeforeCreate": "അംഗത്തെ ചേർക്കുന്നതിന് മുമ്പ് കുടുംബ തലവനോടുള്ള ബന്ധം തിരഞ്ഞെടുക്കുക."
+  ,"familyMembers": "കുടുംബാംഗങ്ങൾ"
+  ,"viewFamilyMembersFor": "ഇവർക്കുള്ള കുടുംബാംഗങ്ങളെ കാണുക"
+  ,"memberNoFamilyAssigned": "ഈ അംഗം ഇതുവരെ ഒരു കുടുംബത്തിലും ഉൾപ്പെടുത്തിയിട്ടില്ല."
+  ,"unableToLoadFamilyMembers": "ഇപ്പോൾ കുടുംബാംഗങ്ങളെ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
+  ,"close": "അടയ്ക്കുക"
+  ,"editNames": "പേരുകൾ തിരുത്തുക"
+  ,"editWard": "വാർഡിന്റെ പേര് തിരുത്തുക"
+  ,"editUnit": "യൂണിറ്റിന്റെ പേര് തിരുത്തുക"
+  ,"editFamily": "കുടുംബത്തിന്റെ പേര് തിരുത്തുക"
+  ,"editMember": "അംഗത്തിന്റെ പേര് തിരുത്തുക"
+  ,"saveWardName": "വാർഡ് അപ്ഡേറ്റ് ചെയ്യുക"
+  ,"saveUnitName": "യൂണിറ്റ് അപ്ഡേറ്റ് ചെയ്യുക"
+  ,"saveFamilyName": "കുടുംബം അപ്ഡേറ്റ് ചെയ്യുക"
+  ,"saveMemberName": "അംഗത്തെ അപ്ഡേറ്റ് ചെയ്യുക"
+  ,"selectWardBeforeEdit": "തിരുത്തുന്നതിന് മുമ്പ് ഒരു വാർഡ് തിരഞ്ഞെടുക്കുക."
+  ,"selectUnitBeforeEdit": "തിരുത്തുന്നതിന് മുമ്പ് ഒരു യൂണിറ്റ് തിരഞ്ഞെടുക്കുക."
+  ,"selectFamilyBeforeEdit": "തിരുത്തുന്നതിന് മുമ്പ് ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക."
+  ,"selectMemberBeforeEdit": "തിരുത്തുന്നതിന് മുമ്പ് ഒരു അംഗത്തെ തിരഞ്ഞെടുക്കുക."
+  ,"wardUpdatedSuccess": "വാർഡിന്റെ പേര് വിജയകരമായി അപ്ഡേറ്റ് ചെയ്തു."
+  ,"unitUpdatedSuccess": "യൂണിറ്റിന്റെ പേര് വിജയകരമായി അപ്ഡേറ്റ് ചെയ്തു."
+  ,"familyUpdatedSuccess": "കുടുംബത്തിന്റെ പേര് വിജയകരമായി അപ്ഡേറ്റ് ചെയ്തു."
+  ,"memberUpdatedSuccess": "അംഗത്തിന്റെ പേര് വിജയകരമായി അപ്ഡേറ്റ് ചെയ്തു."
+  ,"wardUpdateError": "ഇപ്പോൾ വാർഡിന്റെ പേര് അപ്ഡേറ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
+  ,"unitUpdateError": "ഇപ്പോൾ യൂണിറ്റിന്റെ പേര് അപ്ഡേറ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
+  ,"familyUpdateError": "ഇപ്പോൾ കുടുംബത്തിന്റെ പേര് അപ്ഡേറ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
+  ,"memberUpdateError": "ഇപ്പോൾ അംഗത്തിന്റെ പേര് അപ്ഡേറ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
+  ,"memberNameRequiredForEdit": "അംഗത്തിന്റെ പേരും അവസാന പേരും നിർബന്ധമാണ്."
+  ,"loadingProfile": "പ്രൊഫൈൽ ലോഡ് ചെയ്യുന്നു..."
+  ,"profileLoadError": "ഇപ്പോൾ പ്രൊഫൈൽ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
+  ,"roleLabel": "റോൾ"
+  ,"memberRole": "അംഗം"
+  ,"adminProfileSection": "അഡ്മിൻ പ്രൊഫൈൽ"
+  ,"adminProfileHint": "അംഗങ്ങൾ, കുടുംബങ്ങൾ, യൂണിറ്റുകൾ, വാർഡുകൾ എന്നിവ നിയന്ത്രിക്കാൻ നിങ്ങള്‍ക്ക് അഡ്മിൻ ആക്‌സസ് ഉണ്ട്."
+  ,"myDetails": "എന്റെ വിവരങ്ങൾ"
+  ,"familyDetails": "എന്റെ കുടുംബ വിവരങ്ങൾ"
+  ,"noFamilyMembers": "കുടുംബാംഗങ്ങളെ കണ്ടെത്തിയില്ല."
+  ,"passwordSettings": "പാസ്‌വേഡ് ക്രമീകരണം"
+  ,"passwordUpdatedSuccess": "പാസ്‌വേഡ് വിജയകരമായി അപ്ഡേറ്റ് ചെയ്തു."
+  ,"relationToFamilyHead": "കുടുംബ തലവനോടുള്ള ബന്ധം"
+  ,"weeklySchedule": "ആഴ്ച്ച ഷെഡ്യൂൾ"
+  ,"manageSchedule": "ഷെഡ്യൂൾ നിയന്ത്രിക്കുക"
+  ,"loadingSchedule": "ഷെഡ്യൂൾ ലോഡ് ചെയ്യുന്നു..."
+  ,"scheduleLoadError": "ഇപ്പോൾ ഷെഡ്യൂൾ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
+  ,"scheduleSaveError": "ഇപ്പോൾ ഷെഡ്യൂൾ സംരക്ഷിക്കാൻ കഴിഞ്ഞില്ല."
+  ,"scheduleSavedSuccess": "ഷെഡ്യൂൾ വിജയകരമായി സംരക്ഷിച്ചു."
+  ,"scheduleCarryForwardHint": "തിരഞ്ഞെടുത്ത ദിവസങ്ങൾക്ക് പുതിയ മാറ്റം നൽകുന്നത് വരെ നിലവിലെ ഷെഡ്യൂൾ എല്ലാ ആഴ്ചയിലും തുടരും."
+  ,"scheduleSelectDaysError": "കുറഞ്ഞത് ഒരു ദിവസം എങ്കിലും തിരഞ്ഞെടുക്കുക."
+  ,"scheduleTimeRequiredError": "ദിവസം സജീവമാക്കിയാൽ സേവന സമയം തിരഞ്ഞെടുക്കണം."
+  ,"applySchedule": "ഷെഡ്യൂൾ പ്രയോഗിക്കുക"
+  ,"dayEnabled": "തിരഞ്ഞെടുത്ത ദിവസങ്ങൾ സജീവമാക്കുക"
+  ,"serviceTime": "സേവന സമയം"
+  ,"serviceLabelOptional": "സേവന ലേബൽ (ഐച്ഛികം)"
+  ,"holyMass": "വിശുദ്ധ കുർബാന"
+  ,"noService": "സേവനം ഇല്ല"
+  ,"presetWeekdays": "ആഴ്ചാ ദിവസങ്ങൾ"
+  ,"presetWeekend": "വാരാന്ത്യം"
+  ,"presetSunday": "ഞായർ മാത്രം"
+  ,"presetAllDays": "എല്ലാ ദിവസങ്ങളും"
+  ,"monday": "തിങ്കൾ"
+  ,"tuesday": "ചൊവ്വ"
+  ,"wednesday": "ബുധൻ"
+  ,"thursday": "വ്യാഴം"
+  ,"friday": "വെള്ളി"
+  ,"saturday": "ശനി"
+  ,"sunday": "ഞായർ"
+  ,"chooseDate": "തീയതി തിരഞ്ഞെടുക്കുക"
+  ,"scheduleForSelectedDate": "തിരഞ്ഞെടുത്ത തീയതിക്കുള്ള ഷെഡ്യൂൾ"
+  ,"eventsForSelectedDate": "തിരഞ്ഞെടുത്ത തീയതിക്കുള്ള ഇവന്റുകൾ"
+  ,"noEventsForDate": "ഈ തീയതിക്ക് ഇവന്റുകളില്ല."
+  ,"addEventForDate": "തിരഞ്ഞെടുത്ത തീയതിക്ക് ഇവന്റ് ചേർക്കുക"
+  ,"eventDateHint": "ഈ തീയതിക്കായി അഡ്മിൻ ഇവന്റുകൾ ചേർക്കാം. ഉപയോക്താക്കൾക്ക് കാണാനേ കഴിയൂ."
+  ,"eventTitle": "ഇവന്റിന്റെ തലക്കെട്ട്"
+  ,"eventLocation": "ഇവന്റ് സ്ഥലം"
+  ,"eventTitleRequired": "ഇവന്റിന്റെ തലക്കെട്ട് നിർബന്ധമാണ്."
+  ,"eventTimeRequired": "ഇവന്റിന്റെ സമയം നിർബന്ധമാണ്."
+  ,"eventSavedSuccess": "ഇവന്റ് വിജയകരമായി സംരക്ഷിച്ചു."
+  ,"eventSaveError": "ഇപ്പോൾ ഇവന്റ് സംരക്ഷിക്കാൻ കഴിഞ്ഞില്ല."
+  ,"eventLoadError": "ഈ തീയതിക്കുള്ള ഇവന്റുകൾ ഇപ്പോൾ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
+  ,"saveEvent": "ഇവന്റ് സംരക്ഷിക്കുക"
+  ,"eventTypeMass": "കുർബാന"
+  ,"eventTypeMeeting": "യോഗം"
+  ,"eventTypeFestival": "തിരുനാൾ"
+  ,"eventTypeOther": "മറ്റ്"
+  ,"addTimeSlot": "മറ്റൊരു സമയം ചേർക്കുക"
+  ,"removeTimeSlot": "സമയം നീക്കുക"
 }

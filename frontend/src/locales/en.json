@@ -84,5 +84,143 @@
   "saving": "Saving...",
   "memberCreatedSuccess": "Member created successfully.",
   "memberCreatedError": "Unable to create member right now.",
-  "selectFamilyBeforeCreate": "Please select a family before creating a member."
+  "selectFamilyBeforeCreate": "Please select a family before creating a member.",
+  "manageHierarchy": "Manage ward, unit, and family",
+  "addWard": "Add ward",
+  "saveWard": "Save ward",
+  "wardName": "Ward name",
+  "wardNameMl": "Ward Malayalam name",
+  "wardCode": "Ward code",
+  "addUnit": "Add unit",
+  "saveUnit": "Save unit",
+  "unitName": "Unit name",
+  "unitNameMl": "Unit Malayalam name",
+  "unitCode": "Unit code",
+  "addFamily": "Add family",
+  "saveFamily": "Save family",
+  "familyName": "Family name",
+  "familyNameMl": "Family Malayalam name",
+  "familyCode": "Family code",
+  "selectWard": "Select ward",
+  "selectUnit": "Select unit",
+  "removeWard": "Remove ward",
+  "removeUnit": "Remove unit",
+  "removeFamily": "Remove family",
+  "deleteWard": "Delete ward",
+  "deleteUnit": "Delete unit",
+  "deleteFamily": "Delete family",
+  "wardSavedSuccess": "Ward saved successfully.",
+  "unitSavedSuccess": "Unit saved successfully.",
+  "familySavedSuccess": "Family saved successfully.",
+  "wardDeletedSuccess": "Ward removed successfully.",
+  "unitDeletedSuccess": "Unit removed successfully.",
+  "familyDeletedSuccess": "Family removed successfully.",
+  "wardSaveError": "Unable to save ward right now.",
+  "unitSaveError": "Unable to save unit right now.",
+  "familySaveError": "Unable to save family right now.",
+  "wardDeleteError": "Unable to remove ward right now.",
+  "unitDeleteError": "Unable to remove unit right now.",
+  "familyDeleteError": "Unable to remove family right now.",
+  "selectWardBeforeUnitCreate": "Please select a ward before creating a unit.",
+  "selectUnitBeforeFamilyCreate": "Please select a unit before creating a family.",
+  "selectWardBeforeDelete": "Please select a ward before removing.",
+  "selectUnitBeforeDelete": "Please select a unit before removing.",
+  "selectFamilyBeforeDelete": "Please select a family before removing.",
+  "manageMemberFamily": "Manage member family",
+  "selectMember": "Select member",
+  "addMemberToFamily": "Add member to family",
+  "removeMemberFromFamily": "Remove member from family",
+  "selectMemberAndFamilyBeforeAssign": "Please select both member and family before assigning.",
+  "selectMemberBeforeFamilyRemove": "Please select a member before removing from family.",
+  "memberAssignedToFamilySuccess": "Member assigned to family successfully.",
+  "memberRemovedFromFamilySuccess": "Member removed from family successfully.",
+  "memberAssignToFamilyError": "Unable to assign member to family right now.",
+  "memberRemoveFromFamilyError": "Unable to remove member from family right now."
+  ,"selectRelation": "Select relation to family head"
+  ,"selectRelationBeforeCreate": "Please select relation to family head before creating a member."
+  ,"familyMembers": "Family members"
+  ,"viewFamilyMembersFor": "View family members for"
+  ,"memberNoFamilyAssigned": "This member is not assigned to any family yet."
+  ,"unableToLoadFamilyMembers": "Unable to load family members right now."
+  ,"close": "Close"
+  ,"editNames": "Edit names"
+  ,"editWard": "Edit ward name"
+  ,"editUnit": "Edit unit name"
+  ,"editFamily": "Edit family name"
+  ,"editMember": "Edit member name"
+  ,"saveWardName": "Update ward"
+  ,"saveUnitName": "Update unit"
+  ,"saveFamilyName": "Update family"
+  ,"saveMemberName": "Update member"
+  ,"selectWardBeforeEdit": "Please select a ward before editing."
+  ,"selectUnitBeforeEdit": "Please select a unit before editing."
+  ,"selectFamilyBeforeEdit": "Please select a family before editing."
+  ,"selectMemberBeforeEdit": "Please select a member before editing."
+  ,"wardUpdatedSuccess": "Ward name updated successfully."
+  ,"unitUpdatedSuccess": "Unit name updated successfully."
+  ,"familyUpdatedSuccess": "Family name updated successfully."
+  ,"memberUpdatedSuccess": "Member name updated successfully."
+  ,"wardUpdateError": "Unable to update ward name right now."
+  ,"unitUpdateError": "Unable to update unit name right now."
+  ,"familyUpdateError": "Unable to update family name right now."
+  ,"memberUpdateError": "Unable to update member name right now."
+  ,"memberNameRequiredForEdit": "Member first name and last name are required."
+  ,"loadingProfile": "Loading profile..."
+  ,"profileLoadError": "Unable to load profile right now."
+  ,"roleLabel": "Role"
+  ,"memberRole": "Member"
+  ,"adminProfileSection": "Admin profile"
+  ,"adminProfileHint": "You have admin access to manage members, families, units, and wards."
+  ,"myDetails": "My details"
+  ,"familyDetails": "My family details"
+  ,"noFamilyMembers": "No family members found."
+  ,"passwordSettings": "Password settings"
+  ,"passwordUpdatedSuccess": "Password updated successfully."
+  ,"relationToFamilyHead": "Relation to family head"
+  ,"weeklySchedule": "Weekly schedule"
+  ,"manageSchedule": "Manage schedule"
+  ,"loadingSchedule": "Loading schedule..."
+  ,"scheduleLoadError": "Unable to load schedule right now."
+  ,"scheduleSaveError": "Unable to save schedule right now."
+  ,"scheduleSavedSuccess": "Schedule saved successfully."
+  ,"scheduleCarryForwardHint": "The schedule stays active every week until you apply a new change for selected day(s)."
+  ,"scheduleSelectDaysError": "Please select at least one day."
+  ,"scheduleTimeRequiredError": "Please choose a service time when day is enabled."
+  ,"applySchedule": "Apply schedule"
+  ,"dayEnabled": "Enable selected day(s)"
+  ,"serviceTime": "Service time"
+  ,"serviceLabelOptional": "Service label (optional)"
+  ,"holyMass": "Holy Mass"
+  ,"noService": "No service"
+  ,"presetWeekdays": "Weekdays"
+  ,"presetWeekend": "Weekend"
+  ,"presetSunday": "Sunday only"
+  ,"presetAllDays": "All days"
+  ,"monday": "Monday"
+  ,"tuesday": "Tuesday"
+  ,"wednesday": "Wednesday"
+  ,"thursday": "Thursday"
+  ,"friday": "Friday"
+  ,"saturday": "Saturday"
+  ,"sunday": "Sunday"
+  ,"chooseDate": "Choose date"
+  ,"scheduleForSelectedDate": "Schedule for selected date"
+  ,"eventsForSelectedDate": "Events for selected date"
+  ,"noEventsForDate": "No events on this date."
+  ,"addEventForDate": "Add event for selected date"
+  ,"eventDateHint": "Admins can add events for this date. Users can only view."
+  ,"eventTitle": "Event title"
+  ,"eventLocation": "Event location"
+  ,"eventTitleRequired": "Event title is required."
+  ,"eventTimeRequired": "Event time is required."
+  ,"eventSavedSuccess": "Event saved successfully."
+  ,"eventSaveError": "Unable to save event right now."
+  ,"eventLoadError": "Unable to load events for this date right now."
+  ,"saveEvent": "Save event"
+  ,"eventTypeMass": "Mass"
+  ,"eventTypeMeeting": "Meeting"
+  ,"eventTypeFestival": "Festival"
+  ,"eventTypeOther": "Other"
+  ,"addTimeSlot": "Add another time"
+  ,"removeTimeSlot": "Remove time"
 }

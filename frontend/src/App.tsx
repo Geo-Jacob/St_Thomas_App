@@ -8,6 +8,8 @@ import { DirectoryPage } from './pages/DirectoryPage'
 import { LoginPage } from './pages/LoginPage'
 import { CertificateWizardPage } from './pages/CertificateWizardPage'
 import { FirstLoginPasswordPage } from './pages/FirstLoginPasswordPage'
+import { ProfilePage } from './pages/ProfilePage'
+import { SchedulePage } from './pages/SchedulePage'
 import type { AuthUser } from './types'
 
 function HistoryArrows() {
@@ -73,8 +75,8 @@ function ProtectedShell({ token, onLogout }: { token: string; onLogout: () => vo
         <Route path="/" element={<DashboardPage />} />
         <Route path="/directory" element={<DirectoryPage token={token} />} />
         <Route path="/certificates" element={<CertificateWizardPage token={token} />} />
-        <Route path="/schedule" element={<div className="p-10 text-center text-slate-700">{t('scheduleComingSoon')}</div>} />
-        <Route path="/profile" element={<div className="p-10 text-center text-slate-700">{t('profileComingSoon')}</div>} />
+        <Route path="/schedule" element={<SchedulePage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

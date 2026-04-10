@@ -82,3 +82,34 @@ export type AuthUser = {
   is_first_login: boolean
   is_staff: boolean
 }
+
+export type WeeklyScheduleDay = {
+  id?: number
+  weekday: number
+  weekday_name: string
+  weekday_key: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday'
+  is_active: boolean
+  service_time: string | null
+  service_label: string
+  service_slots: Array<{ time: string; label: string }>
+  effective_from: string
+  effective_to: string | null
+}
+
+export type WeeklyScheduleResponse = {
+  reference_date: string
+  days: WeeklyScheduleDay[]
+}
+
+export type ScheduleEvent = {
+  id: number
+  title: string
+  description: string
+  type: 'MASS' | 'MEETING' | 'FESTIVAL' | 'OTHER'
+  event_date: string
+  location: string
+  is_recurring: boolean
+  recurrence_rule: string
+  created_by: number
+  created_by_name: string
+}

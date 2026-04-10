@@ -202,6 +202,29 @@ class MemberAdminSerializer(serializers.ModelSerializer):
             "is_first_login",
         )
 
+    def validate(self, attrs):
+        attrs = super().validate(attrs)
+
+        for field in ("first_name", "last_name", "phone_number"):
+            if field in attrs and isinstance(attrs[field], str):
+                attrs[field] = attrs[field].strip()
+
+        if self.instance is None:
+            required_on_create = ("first_name", "last_name", "phone_number", "family", "relation_to_family")
+            missing_fields = []
+
+            for field in required_on_create:
+                value = attrs.get(field)
+                if value is None or (isinstance(value, str) and not value.strip()):
+                    missing_fields.append(field)
+
+            if missing_fields:
+                raise serializers.ValidationError(
+                    {field: _("This field is required.") for field in missing_fields}
+                )
+
+        return attrs
+
     def _enforce_family_head_rules(self, user: User) -> None:
         if not user.family_id:
             return
