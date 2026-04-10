@@ -12,6 +12,7 @@
   "allWards": "എല്ലാ വാർഡുകളും",
   "allUnits": "എല്ലാ യൂണിറ്റുകളും",
   "allFamilies": "എല്ലാ കുടുംബങ്ങളും",
+  "families": "കുടുംബങ്ങൾ",
   "quickCall": "വേഗത്തിൽ വിളിക്കുക",
   "members": "അംഗങ്ങൾ",
   "family": "കുടുംബം",
@@ -71,11 +72,17 @@
   "adminOnly": "അഡ്മിൻ മാത്രം",
   "firstName": "പേര്",
   "lastName": "അവസാന പേര്",
+  "selectGender": "ലിംഗം തിരഞ്ഞെടുക്കുക",
+  "genderMale": "പുരുഷൻ",
+  "genderFemale": "സ്ത്രീ",
+  "genderOther": "മറ്റ്",
   "houseName": "വീട്ടുപേര്",
+  "selectHouseName": "വീട്ടുപേര് തിരഞ്ഞെടുക്കുക",
   "initialPassword": "ആരംഭ പാസ്‌വേഡ് (ഐച്ഛികം)",
   "selectFamily": "കുടുംബം തിരഞ്ഞെടുക്കുക",
   "relationFather": "അച്ഛൻ",
   "relationMother": "അമ്മ",
+  "relationSpouse": "ഭാര്യ/ഭർത്താവ്",
   "relationSon": "മകൻ",
   "relationDaughter": "മകൾ",
   "relationOther": "മറ്റ്",
@@ -138,6 +145,7 @@
   "memberRemoveFromFamilyError": "ഇപ്പോൾ അംഗത്തെ കുടുംബത്തിൽ നിന്ന് നീക്കാൻ കഴിഞ്ഞില്ല."
   ,"selectRelation": "കുടുംബ തലവനോടുള്ള ബന്ധം തിരഞ്ഞെടുക്കുക"
   ,"selectRelationBeforeCreate": "അംഗത്തെ ചേർക്കുന്നതിന് മുമ്പ് കുടുംബ തലവനോടുള്ള ബന്ധം തിരഞ്ഞെടുക്കുക."
+  ,"selectGenderBeforeCreate": "അംഗത്തെ ചേർക്കുന്നതിന് മുമ്പ് ലിംഗം തിരഞ്ഞെടുക്കുക."
   ,"familyMembers": "കുടുംബാംഗങ്ങൾ"
   ,"viewFamilyMembersFor": "ഇവർക്കുള്ള കുടുംബാംഗങ്ങളെ കാണുക"
   ,"memberNoFamilyAssigned": "ഈ അംഗം ഇതുവരെ ഒരു കുടുംബത്തിലും ഉൾപ്പെടുത്തിയിട്ടില്ല."
@@ -165,6 +173,7 @@
   ,"familyUpdateError": "ഇപ്പോൾ കുടുംബത്തിന്റെ പേര് അപ്ഡേറ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
   ,"memberUpdateError": "ഇപ്പോൾ അംഗത്തിന്റെ പേര് അപ്ഡേറ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
   ,"memberNameRequiredForEdit": "അംഗത്തിന്റെ പേരും അവസാന പേരും നിർബന്ധമാണ്."
+  ,"selectDobBeforeCreate": "അംഗത്തെ ചേർക്കുന്നതിന് മുമ്പ് ജനനത്തീയതി തിരഞ്ഞെടുക്കുക."
   ,"loadingProfile": "പ്രൊഫൈൽ ലോഡ് ചെയ്യുന്നു..."
   ,"profileLoadError": "ഇപ്പോൾ പ്രൊഫൈൽ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
   ,"roleLabel": "റോൾ"
@@ -223,4 +232,32 @@
   ,"eventTypeOther": "മറ്റ്"
   ,"addTimeSlot": "മറ്റൊരു സമയം ചേർക്കുക"
   ,"removeTimeSlot": "സമയം നീക്കുക"
+  ,"manageBanners": "ഡാഷ്ബോർഡ് ബാനറുകൾ നിയന്ത്രിക്കുക"
+  ,"manageBannersHint": "ആവശ്യത്തിന് പല ചിത്രങ്ങളും അപ്‌ലോഡ് ചെയ്യാം. അപ്‌ലോഡ് ചെയ്യുന്ന എല്ലാം ഉപയോക്തൃ കരുസെലിൽ കാണിക്കും."
+  ,"saveBanners": "ബാനറുകൾ സംരക്ഷിക്കുക"
+  ,"bannerOne": "ബാനർ ചിത്രം 1"
+  ,"bannerTwo": "ബാനർ ചിത്രം 2"
+  ,"bannerUpdatedSuccess": "ബാനർ ചിത്രങ്ങൾ വിജയകരമായി അപ്ഡേറ്റ് ചെയ്തു."
+  ,"bannerUpdateError": "ഇപ്പോൾ ബാനർ ചിത്രങ്ങൾ അപ്ഡേറ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
+  ,"bannerSelectOneImage": "അപ്ഡേറ്റ് ചെയ്യാൻ കുറഞ്ഞത് ഒരു ബാനർ ചിത്രം തിരഞ്ഞെടുക്കുക."
+  ,"bannerPrev": "മുമ്പത്തെ ബാനർ"
+  ,"bannerNext": "അടുത്ത ബാനർ"
+  ,"bannerPrevShort": "മുമ്പ്"
+  ,"bannerNextShort": "അടുത്തത്"
+  ,"bannerGoTo": "ബാനർ {{number}} കാണുക"
+  ,"bannerAlt": "ചർച്ച് ബാനർ {{number}}"
+  ,"dashboardBannerSubtitle": "പരിഷ് അറിയിപ്പുകളും ആഘോഷങ്ങളും പ്രധാന വിവരങ്ങളും ഒരിടത്ത്."
+  ,"bannerImages": "ബാനർ ചിത്രങ്ങൾ"
+  ,"uploadBanners": "തിരഞ്ഞെടുത്ത ചിത്രങ്ങൾ അപ്‌ലോഡ് ചെയ്യുക"
+  ,"deleteBanner": "നീക്കുക"
+  ,"bannerDeletedSuccess": "ബാനർ ചിത്രം വിജയകരമായി നീക്കി."
+  ,"bannerDeleteError": "ഈ ബാനർ ചിത്രം ഇപ്പോൾ നീക്കാൻ കഴിഞ്ഞില്ല."
+  ,"bannerSelectedCount_one": "{{count}} ചിത്രം തിരഞ്ഞെടുത്തു"
+  ,"bannerSelectedCount_other": "{{count}} ചിത്രങ്ങൾ തിരഞ്ഞെടുത്തു"
+  ,"holyMassTiming": "വിശുദ്ധ കുർബാന സമയം"
+  ,"scheduleHeroSubtitle": "ആഴ്ചയിലെ സമയക്രമങ്ങളും പള്ളി സേവന സമയങ്ങളും ഒരു നോക്കിൽ."
+  ,"scheduleHeroAlt": "വിശുദ്ധ കുർബാന ഷെഡ്യൂൾ ചിത്രം"
+  ,"selectedDateLabel": "തിരഞ്ഞെടുത്ത തീയതി"
+  ,"day": "ദിവസം"
+  ,"timing": "സമയം"
 }

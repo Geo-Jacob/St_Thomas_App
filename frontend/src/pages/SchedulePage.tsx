@@ -21,6 +21,7 @@ const PRESETS = {
 } as const
 
 const todayIso = new Date().toISOString().slice(0, 10)
+const scheduleHeroImage = '/schedule/holing-host-scaled.jpg'
 
 export function SchedulePage() {
   const { t } = useTranslation()
@@ -74,6 +75,18 @@ export function SchedulePage() {
     return orderedSchedule.find((item) => item.weekday === weekday) ?? null
   }, [orderedSchedule, selectedDate])
 
+  const getScheduleSlotList = (item: WeeklyScheduleDay) => {
+    if (item.service_slots && item.service_slots.length > 0) {
+      return item.service_slots
+    }
+
+    if (item.service_time) {
+      return [{ time: item.service_time, label: item.service_label }]
+    }
+
+    return []
+  }
+
   const loadData = async () => {
     setLoading(true)
     setError('')
@@ -103,6 +116,20 @@ export function SchedulePage() {
 
   useEffect(() => {
     void loadData()
+  }, [selectedDate])
+
+  useEffect(() => {
+    const refresh = () => {
+      void loadData()
+    }
+
+    const intervalId = window.setInterval(refresh, 20000)
+    window.addEventListener('focus', refresh)
+
+    return () => {
+      window.clearInterval(intervalId)
+      window.removeEventListener('focus', refresh)
+    }
   }, [selectedDate])
 
   const toggleDay = (day: number) => {
@@ -167,6 +194,7 @@ export function SchedulePage() {
 
       const response = await api.post<WeeklyScheduleResponse>('/schedule/apply/', payload)
       setSchedule(response.data.days)
+      await loadData()
       setSaveSuccess(t('scheduleSavedSuccess'))
     } catch {
       setSaveError(t('scheduleSaveError'))
@@ -217,23 +245,88 @@ export function SchedulePage() {
   }
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-      <section className="rounded-[2rem] bg-church-radial p-5 sm:p-7">
-        <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-navy/70">{t('schedule')}</p>
-            <h1 className="mt-2 text-3xl font-extrabold text-slate-900 sm:text-4xl">{t('weeklySchedule')}</h1>
-          </div>
-          <div className="w-full max-w-xs rounded-2xl border border-slate-200 bg-white p-3 shadow-soft">
-            <label className="block text-xs font-semibold uppercase tracking-[0.12em] text-slate-600">{t('chooseDate')}</label>
-            <input
-              type="date"
-              value={selectedDate}
-              onChange={(event) => setSelectedDate(event.target.value)}
-              className="mt-2 min-h-11 w-full rounded-xl border border-slate-300 bg-cream px-3 text-sm outline-none"
-            />
-          </div>
+    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <section className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-navy/70">{t('schedule')}</p>
+          <h1 className="mt-2 text-3xl font-extrabold text-slate-900 sm:text-4xl">{t('weeklySchedule')}</h1>
         </div>
+        <div className="w-full max-w-xs rounded-2xl border border-slate-200 bg-white p-3 shadow-soft">
+          <label className="block text-xs font-semibold uppercase tracking-[0.12em] text-slate-600">{t('chooseDate')}</label>
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={(event) => setSelectedDate(event.target.value)}
+            className="mt-2 min-h-11 w-full rounded-xl border border-slate-300 bg-cream px-3 text-sm outline-none"
+          />
+        </div>
+      </section>
+
+      {!isAdmin ? (
+        <section className="rounded-[2rem] bg-church-radial p-4 shadow-soft sm:p-6 lg:p-8">
+          <div className="grid items-center gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
+            <div className="flex justify-center lg:justify-start">
+              <div className="relative w-full max-w-[620px]">
+                <div className="absolute -inset-4 rounded-full bg-gold/20 blur-3xl" aria-hidden="true" />
+                <div className="relative mx-auto aspect-square w-full max-w-[620px] overflow-hidden rounded-[48%] border border-white/70 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.15)]">
+                  <img
+                    src={scheduleHeroImage}
+                    alt={t('scheduleHeroAlt')}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-[2rem] border border-slate-200 bg-white/95 p-4 shadow-soft backdrop-blur sm:p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-navy/60">{t('schedule')}</p>
+              <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <h2 className="text-2xl font-extrabold text-slate-900 sm:text-3xl">{t('holyMassTiming')}</h2>
+                  <p className="mt-1 text-sm text-slate-600">{t('scheduleHeroSubtitle')}</p>
+                </div>
+                <div className="rounded-full border border-navy/15 bg-cream px-4 py-2 text-sm font-semibold text-slate-700">
+                  {t('selectedDateLabel')}: {selectedDate}
+                </div>
+              </div>
+
+              <div className="mt-5 overflow-hidden rounded-3xl border border-slate-200 bg-white">
+                <div className="grid grid-cols-[1fr_2fr] bg-[#f0bc7d] px-4 py-3 text-sm font-bold text-slate-900">
+                  <div>{t('day')}</div>
+                  <div>{t('timing')}</div>
+                </div>
+                <div className="divide-y divide-slate-200">
+                  {orderedSchedule.map((item) => {
+                    const slots = getScheduleSlotList(item)
+                    return (
+                      <div key={item.weekday} className="grid grid-cols-[1fr_2fr] gap-3 px-4 py-4 text-sm">
+                        <div className="font-bold text-slate-900">{t(item.weekday_key)}</div>
+                        <div className="space-y-2 text-slate-700">
+                          {item.is_active && slots.length > 0 ? (
+                            <div className="flex flex-wrap gap-2">
+                              {slots.map((slot, index) => (
+                                <span
+                                  key={`${slot.time}-${index}`}
+                                  className="inline-flex items-center rounded-full border border-navy/15 bg-cream px-3 py-1 text-xs font-semibold text-slate-800"
+                                >
+                                  {slot.time ? slot.time.slice(0, 5) : '--:--'}
+                                  {slot.label ? ` • ${slot.label}` : ''}
+                                </span>
+                              ))}
+                            </div>
+                          ) : (
+                            <span className="text-slate-500">{t('noService')}</span>
+                          )}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
         {isAdmin ? (
           <section className="mb-6 rounded-[2rem] border border-navy/10 bg-white p-4 shadow-soft sm:p-5">
@@ -374,56 +467,6 @@ export function SchedulePage() {
           </section>
         ) : null}
 
-        <section className="rounded-[2rem] border border-navy/10 bg-white p-4 shadow-soft sm:p-5">
-          {loading ? <p className="text-sm text-slate-600">{t('loadingSchedule')}</p> : null}
-          {error ? <p className="rounded-xl bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
-
-          {!loading && !error ? (
-            <>
-              <article className="mb-4 rounded-2xl border border-slate-200 bg-cream p-4">
-                <h3 className="text-base font-bold text-slate-900">{t('scheduleForSelectedDate')}</h3>
-                {selectedDaySchedule?.is_active ? (
-                  <div className="mt-2 space-y-2">
-                    {(selectedDaySchedule.service_slots && selectedDaySchedule.service_slots.length > 0
-                      ? selectedDaySchedule.service_slots
-                      : selectedDaySchedule.service_time
-                        ? [{ time: selectedDaySchedule.service_time, label: selectedDaySchedule.service_label }]
-                        : []
-                    ).map((slot, index) => (
-                      <div key={`${slot.time}-${index}`} className="rounded-xl border border-slate-200 bg-white px-3 py-2">
-                        <p className="text-sm font-semibold text-navy">{t('serviceTime')}: {slot.time ? slot.time.slice(0, 5) : '--:--'}</p>
-                        <p className="text-sm text-slate-700">{slot.label || t('holyMass')}</p>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="mt-2 text-sm text-slate-600">{t('noService')}</p>
-                )}
-              </article>
-
-              <h3 className="mb-2 text-base font-bold text-slate-900">{t('eventsForSelectedDate')}</h3>
-              {eventLoadError ? <p className="mb-2 rounded-xl bg-red-50 px-3 py-2 text-sm text-red-700">{eventLoadError}</p> : null}
-              {events.length > 0 ? (
-                <div className="space-y-2">
-                  {events.map((item) => (
-                    <article key={item.id} className="rounded-2xl border border-slate-200 bg-cream p-4">
-                      <div className="flex items-start justify-between gap-3">
-                        <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
-                        <span className="text-xs font-semibold uppercase tracking-[0.08em] text-navy">{item.type}</span>
-                      </div>
-                      <p className="mt-1 text-sm text-slate-700">{new Date(item.event_date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
-                      {item.location ? <p className="mt-1 text-sm text-slate-700">{item.location}</p> : null}
-                      {item.description ? <p className="mt-1 text-sm text-slate-600">{item.description}</p> : null}
-                    </article>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-sm text-slate-600">{t('noEventsForDate')}</p>
-              )}
-            </>
-          ) : null}
-        </section>
-      </section>
     </main>
   )
 }

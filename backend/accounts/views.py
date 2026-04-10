@@ -77,6 +77,28 @@ class MemberViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(family_id=family_id)
 
         if search_term:
+            search_match = Q(first_name__icontains=search_term)
+            search_match |= Q(last_name__icontains=search_term)
+            search_match |= Q(house_name__icontains=search_term)
+            search_match |= Q(phone_number__icontains=search_term)
+            search_match |= Q(family__name__icontains=search_term)
+            search_match |= Q(family__name_ml__icontains=search_term)
+            search_match |= Q(family__unit__name__icontains=search_term)
+            search_match |= Q(family__unit__name_ml__icontains=search_term)
+            search_match |= Q(family__unit__ward__name__icontains=search_term)
+            search_match |= Q(family__unit__ward__name_ml__icontains=search_term)
+
+            matching_family_ids = list(
+                queryset.filter(search_match, family_id__isnull=False)
+                .values_list("family_id", flat=True)
+                .distinct()
+            )
+            matching_member_ids = list(
+                queryset.filter(search_match, family_id__isnull=True).values_list("id", flat=True).distinct()
+            )
+
+            queryset = queryset.filter(Q(family_id__in=matching_family_ids) | Q(id__in=matching_member_ids))
+
             queryset = queryset.annotate(
                 similarity=Greatest(
                     TrigramSimilarity("first_name", search_term),
@@ -90,19 +112,7 @@ class MemberViewSet(viewsets.ModelViewSet):
                     Coalesce(TrigramSimilarity("family__unit__name_ml", search_term), Value(0.0)),
                     Coalesce(TrigramSimilarity("family__unit__ward__name_ml", search_term), Value(0.0)),
                 )
-            ).filter(
-                Q(similarity__gt=0.08)
-                | Q(first_name__icontains=search_term)
-                | Q(last_name__icontains=search_term)
-                | Q(house_name__icontains=search_term)
-                | Q(phone_number__icontains=search_term)
-                | Q(family__name__icontains=search_term)
-                | Q(family__name_ml__icontains=search_term)
-                | Q(family__unit__name__icontains=search_term)
-                | Q(family__unit__name_ml__icontains=search_term)
-                | Q(family__unit__ward__name__icontains=search_term)
-                | Q(family__unit__ward__name_ml__icontains=search_term)
-            ).order_by("-similarity", "first_name", "last_name")
+            ).order_by("family_id", "-similarity", "first_name", "last_name")
 
         return queryset
 

@@ -1,12 +1,14 @@
 export type Member = {
   id: number
   display_name: string
+  family_head_name: string
   first_name: string
   last_name: string
+  gender: 'MALE' | 'FEMALE' | 'OTHER'
   house_name: string
-  phone_number: string
+  phone_number: string | null
   date_of_birth: string | null
-  relation_to_family: 'FATHER' | 'MOTHER' | 'SON' | 'DAUGHTER' | 'OTHER'
+  relation_to_family: 'FATHER' | 'MOTHER' | 'SPOUSE' | 'SON' | 'DAUGHTER' | 'OTHER'
   is_deceased?: boolean
   is_family_head?: boolean
   family: number | null
@@ -68,10 +70,11 @@ export type AuthUser = {
   display_name: string
   first_name: string
   last_name: string
+  gender?: 'MALE' | 'FEMALE' | 'OTHER'
   phone_number: string
   house_name: string
   date_of_birth?: string | null
-  relation_to_family?: 'FATHER' | 'MOTHER' | 'SON' | 'DAUGHTER' | 'OTHER'
+  relation_to_family?: 'FATHER' | 'MOTHER' | 'SPOUSE' | 'SON' | 'DAUGHTER' | 'OTHER'
   is_deceased?: boolean
   is_family_head?: boolean
   area_ward: string
@@ -112,4 +115,14 @@ export type ScheduleEvent = {
   recurrence_rule: string
   created_by: number
   created_by_name: string
+}
+
+export type DashboardBannerImage = {
+  id: number
+  image_url: string
+  sort_order: number
+}
+
+export type DashboardBannerResponse = {
+  images: DashboardBannerImage[]
 }

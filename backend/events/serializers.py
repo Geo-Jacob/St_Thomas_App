@@ -3,7 +3,7 @@ from datetime import date
 from django.db.models import Q
 from rest_framework import serializers
 
-from .models import Event, WeeklyScheduleRule
+from .models import DashboardBanner, DashboardBannerImage, Event, WeeklyScheduleRule
 
 
 WEEKDAY_KEYS = {
@@ -137,6 +137,52 @@ class EventSerializer(serializers.ModelSerializer):
             "created_by_name",
         )
         read_only_fields = ("created_by",)
+
+
+class DashboardBannerSerializer(serializers.ModelSerializer):
+    banner_one_url = serializers.SerializerMethodField()
+    banner_two_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = DashboardBanner
+        fields = (
+            "id",
+            "banner_one",
+            "banner_two",
+            "banner_one_url",
+            "banner_two_url",
+            "updated_at",
+        )
+        read_only_fields = ("id", "banner_one_url", "banner_two_url", "updated_at")
+
+    def get_banner_one_url(self, obj: DashboardBanner):
+        request = self.context.get("request")
+        if not obj.banner_one:
+            return ""
+        url = obj.banner_one.url
+        return request.build_absolute_uri(url) if request else url
+
+    def get_banner_two_url(self, obj: DashboardBanner):
+        request = self.context.get("request")
+        if not obj.banner_two:
+            return ""
+        url = obj.banner_two.url
+        return request.build_absolute_uri(url) if request else url
+
+
+class DashboardBannerImageSerializer(serializers.ModelSerializer):
+    image_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = DashboardBannerImage
+        fields = ("id", "image_url", "sort_order")
+
+    def get_image_url(self, obj: DashboardBannerImage):
+        request = self.context.get("request")
+        if not obj.image:
+            return ""
+        url = obj.image.url
+        return request.build_absolute_uri(url) if request else url
 
 
 

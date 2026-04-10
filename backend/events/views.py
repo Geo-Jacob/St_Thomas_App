@@ -6,8 +6,9 @@ from rest_framework import permissions, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Event, WeeklyScheduleRule
+from .models import DashboardBannerImage, Event, WeeklyScheduleRule
 from .serializers import (
+    DashboardBannerImageSerializer,
     EventSerializer,
     ScheduleApplySerializer,
     WeeklyScheduleRuleSerializer,
@@ -130,5 +131,74 @@ class ScheduleApplyView(APIView):
             {
                 "reference_date": reference_date,
                 "days": WeeklyScheduleRuleSerializer(items, many=True).data,
+            }
+        )
+
+
+class DashboardBannerView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        images = DashboardBannerImage.objects.filter(is_active=True).order_by("sort_order", "id")
+        return Response(
+            {
+                "images": DashboardBannerImageSerializer(images, many=True, context={"request": request}).data,
+            }
+        )
+
+    def post(self, request):
+        if not request.user.is_staff:
+            return Response({"detail": "You do not have permission to perform this action."}, status=403)
+
+        files = request.FILES.getlist("images")
+        if not files:
+            return Response({"detail": "Please upload at least one image."}, status=400)
+
+        next_sort_order = (
+            DashboardBannerImage.objects.order_by("-sort_order").values_list("sort_order", flat=True).first() or 0
+        )
+
+        created = []
+        for file_obj in files:
+            next_sort_order += 1
+            created.append(
+                DashboardBannerImage.objects.create(
+                    image=file_obj,
+                    sort_order=next_sort_order,
+                    is_active=True,
+                    created_by=request.user,
+                )
+            )
+
+        return Response(
+            {
+                "uploaded": DashboardBannerImageSerializer(created, many=True, context={"request": request}).data,
+                "images": DashboardBannerImageSerializer(
+                    DashboardBannerImage.objects.filter(is_active=True).order_by("sort_order", "id"),
+                    many=True,
+                    context={"request": request},
+                ).data,
+            }
+        )
+
+
+class DashboardBannerItemView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def delete(self, request, banner_id: int):
+        if not request.user.is_staff:
+            return Response({"detail": "You do not have permission to perform this action."}, status=403)
+
+        deleted_count, _ = DashboardBannerImage.objects.filter(pk=banner_id).delete()
+        if not deleted_count:
+            return Response({"detail": "Banner image not found."}, status=404)
+
+        return Response(
+            {
+                "images": DashboardBannerImageSerializer(
+                    DashboardBannerImage.objects.filter(is_active=True).order_by("sort_order", "id"),
+                    many=True,
+                    context={"request": request},
+                ).data,
             }
         )

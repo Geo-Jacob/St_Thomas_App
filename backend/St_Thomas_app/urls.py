@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import include, path
 from django.http import JsonResponse
+from django.conf import settings
+from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenRefreshView
 
 
@@ -19,6 +21,7 @@ def api_home(request):
             "certificates": "/api/certificates/",
             "schedule_weekly": "/api/schedule/weekly/",
             "schedule_apply": "/api/schedule/apply/",
+            "banners": "/api/banners/",
         }
     )
 
@@ -31,3 +34,6 @@ urlpatterns = [
     path("api/", include("events.urls")),
     path("api/certificates/", include("certificates.urls")),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -12,6 +12,7 @@
   "allWards": "All wards",
   "allUnits": "All units",
   "allFamilies": "All families",
+  "families": "families",
   "quickCall": "Quick Call",
   "members": "members",
   "family": "Family",
@@ -71,11 +72,17 @@
   "adminOnly": "Admin only",
   "firstName": "First name",
   "lastName": "Last name",
+  "selectGender": "Select gender",
+  "genderMale": "Male",
+  "genderFemale": "Female",
+  "genderOther": "Other",
   "houseName": "House name",
+  "selectHouseName": "Select house name",
   "initialPassword": "Initial password (optional)",
   "selectFamily": "Select family",
   "relationFather": "Father",
   "relationMother": "Mother",
+  "relationSpouse": "Spouse",
   "relationSon": "Son",
   "relationDaughter": "Daughter",
   "relationOther": "Other",
@@ -138,6 +145,7 @@
   "memberRemoveFromFamilyError": "Unable to remove member from family right now."
   ,"selectRelation": "Select relation to family head"
   ,"selectRelationBeforeCreate": "Please select relation to family head before creating a member."
+  ,"selectGenderBeforeCreate": "Please select gender before creating a member."
   ,"familyMembers": "Family members"
   ,"viewFamilyMembersFor": "View family members for"
   ,"memberNoFamilyAssigned": "This member is not assigned to any family yet."
@@ -165,6 +173,7 @@
   ,"familyUpdateError": "Unable to update family name right now."
   ,"memberUpdateError": "Unable to update member name right now."
   ,"memberNameRequiredForEdit": "Member first name and last name are required."
+  ,"selectDobBeforeCreate": "Please select date of birth before creating a member."
   ,"loadingProfile": "Loading profile..."
   ,"profileLoadError": "Unable to load profile right now."
   ,"roleLabel": "Role"
@@ -223,4 +232,32 @@
   ,"eventTypeOther": "Other"
   ,"addTimeSlot": "Add another time"
   ,"removeTimeSlot": "Remove time"
+  ,"manageBanners": "Manage dashboard banners"
+  ,"manageBannersHint": "Upload as many images as needed. All uploaded images appear in the user carousel."
+  ,"saveBanners": "Save banners"
+  ,"bannerOne": "Banner image 1"
+  ,"bannerTwo": "Banner image 2"
+  ,"bannerUpdatedSuccess": "Banner images updated successfully."
+  ,"bannerUpdateError": "Unable to update banner images right now."
+  ,"bannerSelectOneImage": "Please select at least one banner image to update."
+  ,"bannerPrev": "Previous banner"
+  ,"bannerNext": "Next banner"
+  ,"bannerPrevShort": "Prev"
+  ,"bannerNextShort": "Next"
+  ,"bannerGoTo": "Go to banner {{number}}"
+  ,"bannerAlt": "Church banner {{number}}"
+  ,"dashboardBannerSubtitle": "Parish updates, celebrations, and announcements in one place."
+  ,"bannerImages": "Banner images"
+  ,"uploadBanners": "Upload selected images"
+  ,"deleteBanner": "Remove"
+  ,"bannerDeletedSuccess": "Banner image removed successfully."
+  ,"bannerDeleteError": "Unable to remove this banner image right now."
+  ,"bannerSelectedCount_one": "{{count}} image selected"
+  ,"bannerSelectedCount_other": "{{count}} images selected"
+  ,"holyMassTiming": "Holy Mass Timing"
+  ,"scheduleHeroSubtitle": "Weekly timings and parish service times at a glance."
+  ,"scheduleHeroAlt": "Holy host schedule illustration"
+  ,"selectedDateLabel": "Selected date"
+  ,"day": "Day"
+  ,"timing": "Timing"
 }

@@ -76,3 +76,46 @@ class WeeklyScheduleRule(models.Model):
     def __str__(self) -> str:
         status = "active" if self.is_active else "inactive"
         return f"{self.get_weekday_display()} ({status}) from {self.effective_from}"
+
+
+class DashboardBanner(models.Model):
+    banner_one = models.ImageField(upload_to="banners/")
+    banner_two = models.ImageField(upload_to="banners/")
+    updated_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name="dashboard_banners_updated",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = "dashboard_banners"
+
+    def __str__(self) -> str:
+        return f"Dashboard banners (updated {self.updated_at:%Y-%m-%d %H:%M})"
+
+
+class DashboardBannerImage(models.Model):
+    image = models.ImageField(upload_to="banners/")
+    sort_order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name="dashboard_banner_images_created",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = "dashboard_banner_images"
+        ordering = ["sort_order", "id"]
+        indexes = [
+            models.Index(fields=["is_active", "sort_order"], name="banner_active_sort_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return f"Banner image #{self.pk}"

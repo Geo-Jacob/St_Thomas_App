@@ -44,8 +44,14 @@ class User(AbstractUser):
     class FamilyRelation(models.TextChoices):
         FATHER = "FATHER", _("Father")
         MOTHER = "MOTHER", _("Mother")
+        SPOUSE = "SPOUSE", _("Spouse")
         SON = "SON", _("Son")
         DAUGHTER = "DAUGHTER", _("Daughter")
+        OTHER = "OTHER", _("Other")
+
+    class Gender(models.TextChoices):
+        MALE = "MALE", _("Male")
+        FEMALE = "FEMALE", _("Female")
         OTHER = "OTHER", _("Other")
 
     username = None
@@ -62,6 +68,8 @@ class User(AbstractUser):
         _("Phone number"),
         max_length=20,
         validators=[phone_validator],
+        null=True,
+        blank=True,
         unique=True,
         db_index=True,
     )
@@ -71,6 +79,7 @@ class User(AbstractUser):
         choices=FamilyRelation.choices,
         default=FamilyRelation.OTHER,
     )
+    gender = models.CharField(max_length=10, choices=Gender.choices, default=Gender.OTHER)
     is_deceased = models.BooleanField(default=False)
     is_family_head = models.BooleanField(default=False)
     is_first_login = models.BooleanField(default=True)
