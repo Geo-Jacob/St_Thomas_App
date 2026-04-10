@@ -1,0 +1,173 @@
+St Thomas App - Fresh Clone Setup (Windows, PowerShell)
+
+This file is for someone who just cloned the repo and wants to run it from scratch.
+
+--------------------------------------------------
+0) Install Required Software
+--------------------------------------------------
+1. Git (for cloning)
+2. Python 3.13+
+3. Node.js 18+
+4. PostgreSQL 12+
+5. (Optional) pgAdmin for DB GUI management
+
+Quick checks:
+- git --version
+- python --version
+- node --version
+- npm --version
+- psql --version
+
+--------------------------------------------------
+1) Clone the Repo
+--------------------------------------------------
+Run in PowerShell:
+
+git clone https://github.com/Geo-Jacob/St_Thomas_App.git
+cd St_Thomas_App
+
+--------------------------------------------------
+2) Create PostgreSQL Database
+--------------------------------------------------
+Create a database named: ecclesia
+
+If using psql:
+
+psql -U postgres
+CREATE DATABASE ecclesia;
+\c ecclesia
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+\q
+
+If using pgAdmin:
+- Create database: ecclesia
+- Open Query Tool on ecclesia
+- Run: CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
+--------------------------------------------------
+3) Create Python Virtual Environment
+--------------------------------------------------
+From repo root:
+
+python -m venv .venv
+
+Activate it:
+
+.\.venv\Scripts\Activate.ps1
+
+If script execution is blocked, run once (as current user):
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+Then activate again.
+
+--------------------------------------------------
+4) Install Backend Dependencies
+--------------------------------------------------
+cd backend
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+--------------------------------------------------
+5) Configure Backend Environment Variables
+--------------------------------------------------
+Create backend\.env (or copy from backend\.env.example if present).
+
+Set values in your shell before running backend:
+
+$env:DJANGO_SECRET_KEY="replace-with-random-secret"
+$env:DJANGO_DEBUG="True"
+$env:DJANGO_ALLOWED_HOSTS="127.0.0.1,localhost"
+$env:POSTGRES_DB="ecclesia"
+$env:POSTGRES_USER="postgres"
+$env:POSTGRES_PASSWORD="your_password"
+$env:POSTGRES_HOST="localhost"
+$env:POSTGRES_PORT="5432"
+
+--------------------------------------------------
+6) Run Database Migrations
+--------------------------------------------------
+From backend folder:
+
+python manage.py migrate
+
+--------------------------------------------------
+7) Create Admin User (Recommended)
+--------------------------------------------------
+python manage.py createsuperuser
+
+Important:
+- Login identifier is phone_number (not username).
+
+--------------------------------------------------
+8) (Optional) Load Demo Data
+--------------------------------------------------
+From backend folder:
+
+$env:SEED_DEFAULT_PASSWORD="testpass123"
+python seed_data.py
+
+--------------------------------------------------
+9) Start Backend Server
+--------------------------------------------------
+From backend folder:
+
+python manage.py runserver 8000
+
+Backend:
+- http://127.0.0.1:8000/
+- http://127.0.0.1:8000/admin/
+
+--------------------------------------------------
+10) Install Frontend Dependencies
+--------------------------------------------------
+Open a second terminal in repo root:
+
+cd frontend
+npm install
+
+--------------------------------------------------
+11) Start Frontend
+--------------------------------------------------
+From frontend folder:
+
+npm run dev
+
+Frontend:
+- http://localhost:5173
+
+--------------------------------------------------
+12) Typical Login Flow
+--------------------------------------------------
+1. Login with phone_number + password
+2. If first login, set a new password
+3. Admin users can manage members/schedule/events
+4. Normal users can view directory/schedule/profile details
+
+--------------------------------------------------
+13) Common Fixes
+--------------------------------------------------
+A) "Unable to load schedule right now"
+- Ensure migrations are applied:
+  cd backend
+  python manage.py migrate
+
+B) DB connection errors
+- Re-check POSTGRES_* env vars
+- Ensure PostgreSQL service is running
+
+C) Python import/module errors
+- Confirm virtual env is activated
+- Re-run: pip install -r requirements.txt
+
+D) Frontend errors
+- Re-run: npm install
+- Then: npm run dev
+
+E) If port is busy
+- Backend: python manage.py runserver 8001
+- Frontend: npm run dev -- --port 5174
+
+--------------------------------------------------
+Done.
+You should now be able to run both backend and frontend from a fresh clone.
