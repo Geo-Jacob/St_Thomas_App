@@ -55,6 +55,8 @@
   "requestApproveError": "Unable to approve the certificate request.",
   "requestIssuedSuccess": "Certificate issued successfully.",
   "requestIssueError": "Unable to issue the certificate.",
+  "myCertificateRequests": "My certificate requests",
+  "myCertificateRequestsHint": "Apply for multiple certificates anytime. Your submitted request statuses are shown below.",
   "certificateApprovals": "Certificate approvals",
   "certificateApprovalHint": "Review pending requests and approve or issue certificates.",
   "noCertificateRequests": "No certificate requests found.",
