@@ -87,6 +87,27 @@ export function SchedulePage() {
     return []
   }
 
+  const getEventTime = (eventDate: string) => {
+    const parsed = new Date(eventDate)
+    if (Number.isNaN(parsed.getTime())) {
+      return '--:--'
+    }
+    return parsed.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  }
+
+  const getScheduleSlotLabel = (slot: { time: string; label: string }) => {
+    if (slot.label?.trim()) {
+      return slot.label.trim()
+    }
+
+    const normalizedTime = slot.time?.slice(0, 5)
+    if (normalizedTime === '06:00') {
+      return t('morningMass')
+    }
+
+    return ''
+  }
+
   const loadData = async () => {
     setLoading(true)
     setError('')
@@ -310,7 +331,7 @@ export function SchedulePage() {
                                   className="inline-flex items-center rounded-full border border-navy/15 bg-cream px-3 py-1 text-xs font-semibold text-slate-800"
                                 >
                                   {slot.time ? slot.time.slice(0, 5) : '--:--'}
-                                  {slot.label ? ` • ${slot.label}` : ''}
+                                  {getScheduleSlotLabel(slot) ? ` • ${getScheduleSlotLabel(slot)}` : ''}
                                 </span>
                               ))}
                             </div>
@@ -466,6 +487,64 @@ export function SchedulePage() {
             </div>
           </section>
         ) : null}
+
+      <section className="mb-6 rounded-[2rem] border border-slate-200 bg-white p-4 shadow-soft sm:p-6">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
+          <div>
+            <h2 className="text-lg font-bold text-slate-900">{t('scheduleForSelectedDate')}</h2>
+            <div className="mt-3 rounded-2xl border border-slate-200 bg-cream p-4">
+              {loading ? (
+                <p className="text-sm text-slate-600">{t('loadingSchedule')}</p>
+              ) : selectedDaySchedule ? (
+                selectedDaySchedule.is_active && getScheduleSlotList(selectedDaySchedule).length > 0 ? (
+                  <div className="flex flex-wrap gap-2">
+                    {getScheduleSlotList(selectedDaySchedule).map((slot, index) => (
+                      <span
+                        key={`${slot.time}-${index}`}
+                        className="inline-flex items-center rounded-full border border-navy/15 bg-white px-3 py-1 text-xs font-semibold text-slate-800"
+                      >
+                        {slot.time ? slot.time.slice(0, 5) : '--:--'}
+                        {getScheduleSlotLabel(slot) ? ` • ${getScheduleSlotLabel(slot)}` : ''}
+                      </span>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-sm text-slate-600">{t('noService')}</p>
+                )
+              ) : (
+                <p className="text-sm text-slate-600">{t('scheduleLoadError')}</p>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-slate-900">{t('eventsForSelectedDate')}</h2>
+            <div className="mt-3 rounded-2xl border border-slate-200 bg-cream p-4">
+              {eventLoadError ? (
+                <p className="text-sm text-red-700">{eventLoadError}</p>
+              ) : events.length === 0 ? (
+                <p className="text-sm text-slate-600">{t('noEventsForDate')}</p>
+              ) : (
+                <ul className="space-y-3">
+                  {events.map((event) => (
+                    <li key={event.id} className="rounded-xl border border-slate-200 bg-white p-3">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <p className="font-semibold text-slate-900">{event.title}</p>
+                        <span className="rounded-full border border-navy/15 bg-cream px-2 py-1 text-xs font-semibold text-slate-700">
+                          {getEventTime(event.event_date)}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500">{event.type}</p>
+                      {event.location ? <p className="mt-1 text-sm text-slate-700">{event.location}</p> : null}
+                      {event.description ? <p className="mt-1 text-sm text-slate-600">{event.description}</p> : null}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
 
     </main>
   )

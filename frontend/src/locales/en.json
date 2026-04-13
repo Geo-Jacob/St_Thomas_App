@@ -202,6 +202,7 @@
   ,"serviceTime": "Service time"
   ,"serviceLabelOptional": "Service label (optional)"
   ,"holyMass": "Holy Mass"
+  ,"morningMass": "Morning Mass"
   ,"noService": "No service"
   ,"presetWeekdays": "Weekdays"
   ,"presetWeekend": "Weekend"
